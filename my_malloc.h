@@ -81,7 +81,6 @@ void *my_malloc(size_t size){
 		/*
 		  Remove FN from list
 		*/
-		//freenode *temp = head;
 		
 		//If head is the only node then make the list empty
 		if(head->next==NULL){
@@ -93,15 +92,6 @@ void *my_malloc(size_t size){
 		//Elsewise find FN and remove the pointer to it
 		else{
 			prev->next = FN->next;
-			/*while(temp->next!=NULL){
-				if(temp->next==FN){
-					temp->next=FN->next;
-					break;
-				}
-				else{
-					temp = temp->next;
-				}
-			}*/
 		}
 	}
 	else{
@@ -121,8 +111,6 @@ void *my_malloc(size_t size){
 		freenode *temp = (freenode*)addr;
 		temp->size = remSize;
 		temp->next = FN->next;
-
-		//freenode *curr = head;
 		
 		//If only the head is in the freelist, then change freelist to be the remaining bytes
 		if(head->next==NULL){
@@ -133,16 +121,6 @@ void *my_malloc(size_t size){
 		}
 		else{
 			prev->next = temp;
-			/*//Add remaining bytes and remove assigned bytes
-			while(curr->next!=NULL){
-				if(curr->next==FN){
-					curr->next=temp;
-					break;
-				}
-				else{
-					curr = curr->next;
-				}
-			}*/
 		}
 	}
 
@@ -169,5 +147,3 @@ void my_free(void* ptr){
 	
 	return;
 }
-
-
